@@ -1,0 +1,187 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap");
+
+* {
+  box-sizing: border-box;
+  font-family: "Roboto", sans-serif;
+}
+html,
+body,
+#root {
+  padding: 0;
+  margin: 0;
+  height: 100vh;
+  width: 100vw;
+}
+button {
+  border: none;
+  border-radius: 2em;
+  padding: 1em;
+  transition-duration: 0.7s;
+  min-width: 10em;
+  &:hover {
+    transform: scale(1.1);
+  }
+}
+
+select {
+  padding: 0.5em 1em;
+}
+
+nav {
+  height: 5vh;
+  display: flex;
+  justify-content: space-around;
+  background-color: cadetblue;
+  a {
+    color: White;
+    font-size: 1.5em;
+  }
+}
+a {
+  text-decoration: none;
+  color: black;
+  transition-duration: 0.7s;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  &:hover {
+    transform: scale(1.1);
+  }
+}
+.day-picker {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  // width: 23em;
+  height: 21em;
+  margin: 2em;
+  padding: 0.2em;
+  border: 0.1em solid blanchedalmond;
+  span {
+    font-weight: bold;
+  }
+  .day {
+    display: flex;
+    width: 3em;
+    height: 3em;
+    justify-content: center;
+    align-items: center;
+    transition-duration: 0.7s;
+    // background-color: blanchedalmond;
+    &:hover {
+      transform: scale(1.1);
+      cursor: pointer;
+    }
+  }
+  .active-day {
+    background-color: cadetblue;
+    border-radius: 100em;
+  }
+}
+
+#truck-show-container {
+  display: flex;
+  justify-content: space-evenly;
+  height: 95vh;
+  .show-container {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+  .truck-details {
+    background-color: powderblue;
+    justify-content: space-evenly;
+    text-align: center;
+  }
+  #calendar-container {
+    padding: 10em;
+    // background-color: royalblue;
+    justify-content: space-evenly;
+    align-items: center;
+
+    select {
+      // width: 30%;
+      text-align: center;
+      justify-content: center;
+    }
+  }
+}
+
+//////////////// CARD //////////////
+.truck-cards-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  .truck-card {
+    margin: 2em;
+    border-radius: 2em;
+    display: flex;
+    justify-content: flex-start;
+    background-color: cadetblue;
+    width: 70%;
+    img {
+      width: 50%;
+      margin: 2em;
+    }
+    .card-details {
+      width: 50%;
+      background-color: blanchedalmond;
+      height: 100%;
+      text-align: center;
+    }
+  }
+}
+
+.reservations-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  padding: 5em;
+  .reservation-card {
+    background-color: cadetblue;
+    border-radius: 1em;
+    padding: 2em;
+    height: 23em;
+    width: 18em;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    // width: 30%;
+    // height: 50%;
+  }
+}
+
+.landing {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  input {
+    width: 15%;
+    padding: 1em;
+    margin-bottom: 2em;
+  }
+  button {
+    margin: 1em;
+  }
+}
+
+.reservation-show {
+  background-color: cornsilk;
+  height: 95vh;
+  width: 100%;
+  display: flex;
+  .reservation-details {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    padding: 4em;
+    width: 60%;
+  }
+}

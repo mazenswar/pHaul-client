@@ -1,24 +1,36 @@
-import logo from './logo.svg';
-import './App.css';
+import { useEffect, useContext, useState } from 'react'
+import {Context as MainContext} from './context/mainContext'
+import { BrowserRouter as Router, Route } from 'react-router-dom';
+import pages from './pages';
+import NavBar from './components/NavBar';
+import Landing from './pages/Landing';
+import pHaulAPI from './api/pHaulAPI';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+  const {setUser, setTrucks} = useContext(MainContext);
+  const [logged, setLogged] = useState(false)
+  useEffect(() => {
+    try {(async() => {
+        if(localStorage.email) {
+        const {data} = await pHaulAPI.post('/login', {email: localStorage.email});
+        setUser(data);
+        setLogged(true)
+      };
+      const {data} = await pHaulAPI('/trucks');
+      setTrucks(data)
+    })()} catch(e) {
+      console.log(e);
+    }
+    //
+  }, [])
+  return !logged ? <Landing setLogged={setLogged}/> : (
+    <Router>
+      <NavBar setLogged={setLogged}/>
+      <Route exact path="/" component={pages.Home}/>
+      <Route exact path="/trucks/:id" component={pages.TruckShow}/>
+      <Route exact path="/reservations" component={pages.Reservations}/>
+      <Route path="/reservations/:id" component={pages.ReservationShow}/>
+    </Router>
   );
 }
 
