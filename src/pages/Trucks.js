@@ -2,7 +2,7 @@ import React, {useContext} from 'react'
 import TruckCard from '../components/TruckCard'
 import { Context as MainContext } from '../context/mainContext'
 
-export default function Home() {
+export default function Trucks() {
     const {state: {trucks}} = useContext(MainContext)
     return (
         <div className="truck-cards-container">

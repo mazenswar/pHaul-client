@@ -81,7 +81,6 @@ export default function Calendar({handleBooking, reservations, cost}) {
             </select>
         )
     }
-    console.log(startTime, endTime);
     // calc cost
     function calculateCost() {
         const totalBookingHours = (endTime - startTime)
@@ -93,8 +92,10 @@ export default function Calendar({handleBooking, reservations, cost}) {
         const year = new Date().getFullYear();
         let startDate = new Date(`${month}, ${day} ${year}`);
         startDate.setHours(startTime);
+        startDate.setMinutes(0);
         let endDate = new Date(`${month}, ${day} ${year}`);
         endDate.setHours(endTime);
+        endDate.setMinutes(0);
         let data = {
             total_price: calculateCost(),
             start_time: startDate,
@@ -116,7 +117,6 @@ export default function Calendar({handleBooking, reservations, cost}) {
 
 
 const hours = [...Array(24).keys()]
-
 const formattedHours = {
     0: '12:00am',
     1: '1:00am',

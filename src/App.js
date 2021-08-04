@@ -26,7 +26,7 @@ function App() {
   return !logged ? <Landing setLogged={setLogged}/> : (
     <Router>
       <NavBar setLogged={setLogged}/>
-      <Route exact path="/" component={pages.Home}/>
+      <Route exact path="/" component={pages.Trucks}/>
       <Route exact path="/trucks/:id" component={pages.TruckShow}/>
       <Route exact path="/reservations" component={pages.Reservations}/>
       <Route path="/reservations/:id" component={pages.ReservationShow}/>

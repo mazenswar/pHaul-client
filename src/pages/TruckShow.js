@@ -4,6 +4,7 @@ import pHaulAPI from '../api/pHaulAPI';
 import Calendar from '../components/Calendar';
 import { Context as MainContext } from '../context/mainContext';
 export default function TruckShow() {
+    const [error, setError] = useState(null);
     const { push } = useHistory()
     const {setNewReservation} = useContext(MainContext)
     const {id} = useParams()
@@ -49,12 +50,13 @@ export default function TruckShow() {
             setNewReservation(response.data)
             push('/reservations')
         } catch(e) {
-            console.log(e);
+            setError('Booking could not be created, please try a different time or come back later')
         }
     }
 
     return (
         <div id="truck-show-container">
+        <span className="error">{error}</span>
             <div className="truck-details show-container">
                 <h1>{truck.year} {truck.make} {truck.model}</h1>
                 <h2>Hourly Rate ${truck.hourly_rate}</h2>
