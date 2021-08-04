@@ -5,15 +5,15 @@ import Calendar from '../components/Calendar';
 import { Context as MainContext } from '../context/mainContext';
 export default function TruckShow() {
     const [error, setError] = useState(null);
-    const { push } = useHistory()
-    const {setNewReservation} = useContext(MainContext)
-    const {id} = useParams()
     const [truck, setTruck] = useState({
         model: '',
         make: '',
         year: null,
         reservations: []
     })
+    const {setNewReservation} = useContext(MainContext)
+    const { push } = useHistory()
+    const {id} = useParams()
     
     useEffect(() => {    
         (async () => {
@@ -32,19 +32,6 @@ export default function TruckShow() {
             truck_id: id,
             user_id: 1
         }
-        // TEST CLASH
-        // let startTime = new Date('Aug 14, 2021')
-        // startTime.setHours(13)
-        // startTime.setMinutes(0)
-        // let endTime = new Date('Aug 14, 2021')
-        // endTime.setHours(16)
-        // endTime.setMinutes(0)
-        // const bookingData2 = {
-        //     start_time: startTime,
-        //     end_time: endTime,
-        //     user_id: 1,
-        //     truck_id: 1
-        // }
         try {
             const response = await pHaulAPI.post('/reservations', bookingData)
             setNewReservation(response.data)

@@ -10,14 +10,18 @@ export default function Landing({setLogged}) {
     }
     async function handleClick(type) {
         const validInput = email.includes('@') && email.length;
-        if (!validInput) return setError('Please enter a valid email')
+        if (!validInput) {
+            setError('Please enter a valid email')
+            setEmail('');
+            return;
+        }
         setError(null)
         const endpoint = type === 'login' ? '/login' : '/users';
         try {
             const {data} = await pHaulAPI.post(endpoint, { email })
             setUser(data)
             localStorage.setItem('email', email)
-            setLogged(true)
+            setLogged(true);
         }
         catch(e) {
             setError('Could not find user with that email');
